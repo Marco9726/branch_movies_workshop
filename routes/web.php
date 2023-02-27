@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController as PageController;
+use App\Http\Controllers\MovieController as MovieController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,3 +15,5 @@ use App\Http\Controllers\PageController as PageController;
 */
 
 Route::get('/', [PageController::class, 'index'])->name('home');
+
+Route::resource('movies', MovieController::class);
