@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Movie;
 
 class MovieController extends Controller
 {
@@ -56,7 +57,13 @@ class MovieController extends Controller
      */
     public function edit($id)
     {
-        //
+        $movie = Movie::find($id);
+        if ($movie) {
+            $data = [
+                'movie' => $movie
+            ];
+            return view('movies.edit', $data);
+        }
     }
 
     /**
@@ -68,7 +75,11 @@ class MovieController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $movie = Movie::findOrFail($id);
+        $form_data = $request->all();
+        $movie->update($form_data);
+        return redirect()->route('movies.show', ['movie' => $movie->id]);
     }
 
     /**
