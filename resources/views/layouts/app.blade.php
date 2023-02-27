@@ -15,10 +15,15 @@
 
 </head>
 <body>
+	<header>
+		HEADER
+	</header>
 	<main>
-		@yeld('content')
+		@yield('content')
 
 	</main>
-	
+	<footer>
+		FOOTER
+	</footer>
 </body>
 </html>
