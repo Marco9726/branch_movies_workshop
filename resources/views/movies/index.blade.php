@@ -32,12 +32,12 @@
                             <td>{{ $movie->nationality }}</td>
                             <td>{{ $movie->release_date }}</td>
                             <td>{{ $movie->vote }}</td>
-                            <td>{{ $movie->casty }}</td>
+                            <td>{{ $movie->cast }}</td>
                             <td>{{ $movie->cover_path }}</td>
                             <td>
                                 <div class="d-flex gap-2">
-                                    <a title="Visualizza" class="btn btn-square btn-sm py-2 btn-primary" href="{{--{{ route('admin.movies.show', $movie->id) }}--}}"><i class="fa-solid fa-eye"></i></a>
-                                    <a title="Modifica" class="btn btn-square btn-sm py-2 btn-warning" href="{{--{{ route('admin.movies.edit', $movie->id) }}--}}"><i class="fa-solid fa-pencil"></i></a>
+                                    <a title="Visualizza" class="btn btn-square btn-sm py-2 btn-primary" href="{{ route('movies.show', $movie->id) }}"><i class="fa-solid fa-eye"></i></a>
+                                    <a title="Modifica" class="btn btn-square btn-sm py-2 btn-warning" href="{{ route('movies.edit', $movie->id) }}"><i class="fa-solid fa-pencil"></i></a>
                                     <form action="{{--{{ route('admin.movies.destroy', $movie->id)}}--}}" method="POST" style="
                                         margin-block-end: 0em;" class="d-inline-block">
                                         @csrf

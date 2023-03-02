@@ -39,29 +39,29 @@ class MovieController extends Controller
 	{
 	}
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
 
 	public function show($id)
 	{
 		$movie = Movie::findOrFail($id);
-
 		return view('movies.show', compact('movie'));
 	}
-
 	/**
 	 * Show the form for editing the specified resource.
 	 *
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
+
+
 	public function edit($id)
 	{
-		//
+		$movie = Movie::find($id);
+		if ($movie) {
+			$data = [
+				'movie' => $movie
+			];
+			return view('movies.edit', $data);
+		}
 	}
 
 	/**
@@ -73,8 +73,14 @@ class MovieController extends Controller
 	 */
 	public function update(Request $request, $id)
 	{
-		//
+
+		$movie = Movie::findOrFail($id);
+		$form_data = $request->all();
+		$movie->update($form_data);
+		return redirect()->route('movies.show', ['movie' => $movie->id]);
 	}
+
+
 
 	/**
 	 * Remove the specified resource from storage.
