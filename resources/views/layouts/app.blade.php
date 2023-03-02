@@ -23,7 +23,7 @@
 
 	</main>
 	<footer>
-		FOOTER
+		@include('partials.footer')
 	</footer>
 </body>
 </html>
