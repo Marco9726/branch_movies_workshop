@@ -10,7 +10,7 @@
                                 <a class="nav-li mx-2" href="#">Home</a>
                             </li>
                             <li class="nav-li">
-                                <a class="nav-li mx-2" href="#">Movies</a> 
+                                <a class="nav-li mx-2" href="{{route('movies.index')}}">Movies</a> 
                             </li>
                             <li class="nav-i display-4">
                                 <div class="d-flex flex-column align-items-center">
