@@ -1,0 +1,14 @@
+@mixin gold {
+    background-image: linear-gradient(
+	to right,
+	#954e18 0,
+       	#cb9b51 22%, 
+	#f6e27a 45%,
+	#f6f2c0 50%,
+	#f6e27a 55%,
+	#cb9b51 78%,
+	#954e18 100%
+	);
+   color:transparent;
+   -webkit-background-clip:text;
+}

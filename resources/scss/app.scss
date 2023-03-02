@@ -1,4 +1,26 @@
+@use 'resources/scss/_mixins.scss' as *;
 @import '~bootstrap/scss/bootstrap';
 // @import "node_modules/font-awesome/scss/font-awesome.scss";
 // @import 'node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss';
 @import "../../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
+
+//HEADER
+    .nav-li {
+        font-size: 20px;
+        font-weight: 500;
+        text-decoration: none;
+
+        :hover {
+            cursor: pointer;
+            color: transparent;
+            
+        }
+    }
+
+    .nav-i , .nav-li {
+        @include gold;
+    }
+
+    h4,h6 {
+        font-weight: 700;
+    }
