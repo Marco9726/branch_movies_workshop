@@ -14,6 +14,7 @@ class MovieController extends Controller
 	 */
 	public function index()
 	{
+
 		$movies = Movie::all();
 		return view('movies.index', compact('movies'));
 	}
@@ -24,6 +25,7 @@ class MovieController extends Controller
 	 */
 	public function create()
 	{
+
 		//
 	}
 
@@ -35,18 +37,20 @@ class MovieController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		//
 	}
 
 	/**
-	 * Display the specified resource.
+	 * Show the form for editing the specified resource.
 	 *
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
+
 	public function show($id)
 	{
-		//
+		$movie = Movie::findOrFail($id);
+
+		return view('movies.show', compact('movie'));
 	}
 
 	/**
