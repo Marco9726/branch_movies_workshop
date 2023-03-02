@@ -3,15 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="offset-3 col-6 text-center my-3">
-               <h4>Modifica il film</h4>
-            </div>
-        </div>
-        <div class="row">
-            <div class="offset-3 col-6 py-3">
-                <div class="d-flex justify-content-between align-items-center">
-                    <h1>{{ $movie['title']}}</h1>
-                    <a href="{{ route('movies.index') }}" class="btn btn-primary">Torna all'elenco</a>
-                </div>
+               <h4>Aggiungi un Nuovo Film</h4>
             </div>
         </div>
         <div class="row">
@@ -31,34 +23,38 @@
                         </div>
                     </div>
                 </div>
-                <form class="p-3" action="{{route('movies.update', $movie->id)}}" method="POST">
+                <form class="p-3" action="{{route('movies.store')}}" method="POST">
                     @csrf
-                    @method('PUT')
                     <div class="form-group">
                         <label class="control-label"><p class="fw-semibold">Titolo</p></label>
-                        <input type="text" name="title" class="form-control" placeholder="Inserisci il titolo" value="{{old('title') ?? $movie->title}}">   
+                        <input type="text" name="title" class="form-control" placeholder="Inserisci il titolo">   
+                         @error('title')
+                            <div>
+                                <p>{{$message}}</p>
+                            </div>
+                        @enderror
                     </div>
                         <label for="floatingTextarea2"><p class="fw-semibold">Titolo Originale</p></label>
-                        <input type="text" name="original_title" class="form-control" placeholder="Inserisci il Titolo Originale" value="{{old('original_title') ?? $movie->original_title}}">
+                        <input type="text" name="original_title" class="form-control" placeholder="Inserisci il Titolo Originale">
                     <div class="form-group">
                         <label class="control-label"><p class="fw-semibold">Nazionalità</p></label>
-                        <input type="text" name="thumb" class="form-control" placeholder="Inserisci la nazionalità" value="{{old('nationality') ?? $movie->nationality}}">
+                        <input type="text" name="nationality" class="form-control" placeholder="Inserisci la nazionalità">
                     </div>
                     <div class="form-group">
                         <label class="control-label"><p class="fw-semibold">Data di Uscita</p></label>
-                        <input type="text" name="release_date" class="form-control" placeholder="Inserisci la Data di Uscita" value="{{old('release_date') ?? $movie->release_date}}">
+                        <input type="text" name="release_date" class="form-control" placeholder="Inserisci la Data di Uscita">
                     </div>
                     <div class="form-group">
                         <label class="control-label"><p class="fw-semibold">Voto</p></label>
-                        <input type="number" name="vote" class="form-control" placeholder="Inserisci il Voto" value="{{old('vote') ?? $movie->vote}}">
+                        <input type="number" name="vote" class="form-control" placeholder="Inserisci il Voto">
                     </div>
                     <div class="form-group">
                         <label class="control-label"><p class="fw-semibold">Cast</p></label>
-                        <input type="text" name="cast" class="form-control" placeholder="Inserisci il Cast" value="{{old('cast') ?? $movie->cast}}">
+                        <input type="text" name="cast" class="form-control" placeholder="Inserisci il Cast">
                     </div>
                     <div class="form-group">
                         <label class="control-label"><p class="fw-semibold">Thumb</p></label>
-                        <input type="text" name="cover_path" class="form-control" placeholder="Inserisci la Thumbnail" value="{{old('cover_path') ?? $movie->cover_path}}">
+                        <input type="text" name="cover_path" class="form-control" placeholder="Inserisci la Thumbnail">
                     </div>
                     <div class="form-group my-3">
                         <button type="submit" class="btn btn-success" class="form-control" >Salva le Modifiche</button>
