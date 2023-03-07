@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Movie;
 use Illuminate\Http\Request;
@@ -16,7 +16,7 @@ class MovieController extends Controller
 	{
 
 		$movies = Movie::all();
-		return view('movies.index', compact('movies'));
+		return view('admin.movies.index', compact('movies'));
 	}
 	/**
 	 * Show the form for creating a new resource.
@@ -26,7 +26,7 @@ class MovieController extends Controller
 	public function create()
 	{
 
-		return view('movies.create');
+		return view('admin.movies.create');
 	}
 
 	/**
@@ -37,18 +37,18 @@ class MovieController extends Controller
 	 */
 	public function store(Request $request)
 	{
-		$form_data = $request->all();
+		$form_data = $request->validated();
 		$new_movie = new Movie();
 		$new_movie->fill($form_data);
 		$new_movie->save();
-		return redirect()->route('movies.index', ['movie' => $new_movie->id]);
+		return redirect()->route('admin.movies.index', ['movie' => $new_movie->id]);
 	}
 
 
 	public function show($id)
 	{
 		$movie = Movie::findOrFail($id);
-		return view('movies.show', compact('movie'));
+		return view('admin.movies.show', compact('movie'));
 	}
 	/**
 	 * Show the form for editing the specified resource.
@@ -65,7 +65,7 @@ class MovieController extends Controller
 			$data = [
 				'movie' => $movie
 			];
-			return view('movies.edit', $data);
+			return view('admin.movies.edit', $data);
 		}
 	}
 
@@ -79,10 +79,10 @@ class MovieController extends Controller
 	public function update(Request $request, $id)
 	{
 
-		$movie = Movie::findOrFail($id);
-		$form_data = $request->all();
+		$form_data = $request->validated();
+
 		$movie->update($form_data);
-		return redirect()->route('movies.show', ['movie' => $movie->id]);
+		return redirect()->route('admin.movies.show', ['movie' => $movie->id]);
 	}
 
 
@@ -97,6 +97,6 @@ class MovieController extends Controller
 	{
 		$movie = Movie::findOrFail($id);
 		$movie->delete();
-		return redirect()->route('movies.index');
+		return redirect()->route('admin.movies.index');
 	}
 }
